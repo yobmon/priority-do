@@ -1,104 +1,24 @@
-import './header.css';
-import statestore from '../zustandprovide/provide';
-import { useState } from 'react';
+import './header.css'
+function Header(){
 
-function Header() {
-  const [input, setInput] = useState('');
-const [calculate,setcalculate]= useState(0);
-  const [priornumber, setPriorNumber] = useState(0);
 
-  const prior = statestore((state) => state.priority);
-  const addprio = statestore((state) => state.addpriority);
-  const addpasser = statestore((state)=>state.addpasser)
-const passer = statestore((state)=>state.passer);
-//const setindexs= statestore((state)=>state.setindex);
 
-  //const indexnumber= statestore((state)=>state.indexnum);
-//  const deleteindex=(index:number)=>{
-// prior.splice(index,1)
-//  }
-// const removeindex=()=>{
-
-//   console.log(indexnumber);
-  
-// }
-
-const calculatetotal=()=>{
-  let total:number = 0;
-  prior.map((item) => (
-  
-total+=item.priorityno
-
-            ))
-           
-  console.log(total);
-
-      const calculated:number = (passer/total)*100 ;  
-      console.log(calculated)  
-setcalculate(Math.round(calculated));
-
-}
-
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-
-    addprio({
-      task: input,
-      priorityno: priornumber, 
-     });
-
-    setInput('');
-    setPriorNumber(0);
-
-    setTimeout(() => {
-      console.log('Updated priority list:', statestore.getState().priority);
-    }, 100);
-  };
-  
-
-  return (
+  return(
     <>
-      <div className="header">
-        <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Task name"
-        />
-        <input
-          type="number"
-          value={priornumber}
-          onChange={(e) => setPriorNumber(Number(e.target.value))}
-          placeholder="Priority number"
-        />
-        <button className="bg-black text-white px-3 py-1" onClick={handleSubmit}>
-          Add
-        </button>
-      </div>
+    <div   className='col1'>
+      <div className='col12'>
+        <h1>
+       <span>Priority</span>  Do
+        </h1>
+        </div>
+        <div className='col13'><p>track your daily doing with comphrensive statics</p></div>
 
-      <div className="priority-list">
-
-      
-         {prior.map((item,index) => (
-  
-<div key={index}>
-            Task: {item.task}  | Priority No: {item.priorityno } 
-            <button onClick={()=>{
-             addpasser(item.priorityno)
-            }}>Complet </button> 
-            <button>delete task</button>
-             
-          </div>
-          
-        ))}
-     <div>
-    <div>{passer}</div>
-   
-    <div>{calculate}</div>
-     </div>
-     <button onClick={calculatetotal}>completed</button>
-      </div>
+    </div>
+    
+    
     </>
-  );
+  )
 }
 
-export default Header;
+
+export default Header
