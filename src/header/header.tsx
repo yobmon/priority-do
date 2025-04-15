@@ -4,23 +4,39 @@ import { useState } from 'react';
 
 function Header() {
   const [input, setInput] = useState('');
-
+const [calculate,setcalculate]= useState(0);
   const [priornumber, setPriorNumber] = useState(0);
 
   const prior = statestore((state) => state.priority);
   const addprio = statestore((state) => state.addpriority);
   const addpasser = statestore((state)=>state.addpasser)
 const passer = statestore((state)=>state.passer);
-const setindexs= statestore((state)=>state.setindex);
+//const setindexs= statestore((state)=>state.setindex);
 
-const indexnumber= statestore((state)=>state.indexnum);
-// const deleteindex=(index:number)=>{
+  //const indexnumber= statestore((state)=>state.indexnum);
+//  const deleteindex=(index:number)=>{
 // prior.splice(index,1)
-// }
-const removeindex=()=>{
-  prior.splice(indexnumber,1)
-  console.log(indexnumber);
+//  }
+// const removeindex=()=>{
+
+//   console.log(indexnumber);
   
+// }
+
+const calculatetotal=()=>{
+  let total:number = 0;
+  prior.map((item) => (
+  
+total+=item.priorityno
+
+            ))
+           
+  console.log(total);
+
+      const calculated:number = (passer/total)*100 ;  
+      console.log(calculated)  
+setcalculate(Math.round(calculated));
+
 }
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -29,7 +45,7 @@ const removeindex=()=>{
     addprio({
       task: input,
       priorityno: priornumber, 
-    });
+     });
 
     setInput('');
     setPriorNumber(0);
@@ -60,28 +76,26 @@ const removeindex=()=>{
       </div>
 
       <div className="priority-list">
+
       
          {prior.map((item,index) => (
-          <div key={index}>
+  
+<div key={index}>
             Task: {item.task}  | Priority No: {item.priorityno } 
             <button onClick={()=>{
              addpasser(item.priorityno)
-            }}>Complete </button> 
-            <button onClick={()=>{setindexs(index) 
-              removeindex();
-            }}
-           >delete task</button> 
+            }}>Complet </button> 
+            <button>delete task</button>
+             
           </div>
+          
         ))}
      <div>
-     {
-     passer.map((value:number)=>(
-      <div>
-        {value}
-      </div>
-     ))
-        }
+    <div>{passer}</div>
+   
+    <div>{calculate}</div>
      </div>
+     <button onClick={calculatetotal}>completed</button>
       </div>
     </>
   );

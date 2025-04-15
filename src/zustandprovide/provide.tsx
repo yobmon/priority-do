@@ -10,27 +10,37 @@ interface DefineState {
   indexnum:number;
 
   setindex:(index:number)=>void;
+
   
   priority: InnerPriority[];
-  passer:number[];
+  passer:number;
   addpasser:(passed:number)=>void;
   addpriority: (item: InnerPriority) => void;
 }
 
 const statestore = create<DefineState>((set) => ({
+
+
+
+
+
   indexnum:0,
   setindex:(index)=>set(
-    ()=>(
+    (state)=>(
       {
-  indexnum:index,
+  indexnum:state.indexnum+index
       }
     )
   ),
-  passer:[],
+
+  passer:0,
   addpasser:(passed)=>set((state)=>({
-passer :[...state.passer,passed],
+passer:state.passer+passed
   }))
-    ,
+  ,
+
+
+
   priority: [],
   addpriority: (item) =>
     set((state) => ({
