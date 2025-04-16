@@ -63,31 +63,36 @@ setcalculate(Math.round(calculated));
    
     <div className='container'>
       <div>
-    <Stack direction={{ xs: 'column', md: 'row' }} spacing={{ xs: 1, md: 3 }}>
+    <Stack direction={{ xs: 'column', md: 'row' }} spacing={{ xs: 1, md: 3 } }>
       <Gauge width={100} height={100} value={calculate} />
    
     </Stack>
     </div>
       <div className="header">
-        <div  className='input1'>     
+   =
+        <div  className='input1'>
+     
         <input
        
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Task name"
-        />
+          required/>
+
         </div>
         <div    className='input2'>
+
         <input
            
           
           onChange={(e) => setPriorNumber(Number(e.target.value))}
           placeholder="Priority number"
-        />
+          required/>
         </div>
+   
         <div className="btn1">
         <button  onClick={handleSubmit}>
-          Ad
+          Add
         </button>
         </div>
       </div>
@@ -108,6 +113,7 @@ setcalculate(Math.round(calculated));
           
         ))}
         </div>
+        <div className='totals'>
      <div>
     <div>{passer}</div>
    
@@ -115,7 +121,7 @@ setcalculate(Math.round(calculated));
      </div>
      <button onClick={calculatetotal}>completed</button>
       </div>
-    
+      </div>
       </div>
     </>
     

@@ -3,10 +3,10 @@
  flex-direction: row;
  align-items: center;
  justify-content: space-evenly;
-
+color: white;
 }
 .col12 span{
-    color: blueviolet;
+    color: rgb(226, 150, 43);
 }
 .col13{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
