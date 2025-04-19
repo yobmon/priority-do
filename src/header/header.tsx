@@ -1,4 +1,5 @@
 import './header.css'
+
 function Header(){
 
 
@@ -12,7 +13,7 @@ function Header(){
         </h1>
         </div>
         <div className='col13'><p>track your daily doing with comphrensive statics</p></div>
-
+     
     </div>
     
     

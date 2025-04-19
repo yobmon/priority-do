@@ -1,0 +1,19 @@
+.section1{
+    color : white;
+}
+.section1 span{
+    color: orange;
+}
+.section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.sec{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
